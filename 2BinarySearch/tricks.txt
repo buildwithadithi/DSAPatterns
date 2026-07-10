@@ -1,0 +1,231 @@
+1. Classic Binary Search
+
+Search for an element in a sorted array.
+
+Template:
+
+while(low <= high) {
+    int mid = low + (high - low) / 2;
+
+    if(nums[mid] == target)
+        return mid;
+    else if(nums[mid] < target)
+        low = mid + 1;
+    else
+        high = mid - 1;
+}
+
+Questions:
+
+Binary Search
+Search Insert Position
+
+2. Lower Bound / Upper Bound
+
+Find first or last occurrence of an element.
+
+Lower Bound
+
+First index where arr[i] >= target
+
+Upper Bound
+
+First index where arr[i] > target
+
+Questions:
+
+Find First and Last Position of Element in Sorted Array
+Search Insert Position
+3. Binary Search on Rotated Arrays
+
+One half is always sorted.
+
+Questions:
+
+Search in Rotated Sorted Array
+Find Minimum in Rotated Sorted Array
+4. Binary Search on Answer
+
+The answer itself is searched.
+
+Pattern
+while(low <= high) {
+    int mid = low + (high - low) / 2;
+
+    if(check(mid))
+        high = mid - 1;
+    else
+        low = mid + 1;
+}
+
+Questions:
+
+Koko Eating Bananas
+Capacity To Ship Packages Within D Days
+Split Array Largest Sum
+
+This is the most important placement pattern.
+
+5. Binary Search on Peak / Unsorted Array
+
+Array isn't sorted, but some property allows binary search.
+
+Questions:
+
+Find Peak Element
+Peak Index in a Mountain Array
+6. Binary Search on Matrix
+
+Treat matrix rows or the entire matrix as sorted.
+
+Questions:
+
+Search a 2D Matrix
+Search a 2D Matrix II
+7. Binary Search with Mathematical Property
+
+Search using a monotonic mathematical condition.
+
+Questions:
+
+Sqrt(x)
+Valid Perfect Square
+Placement Priority Order
+Classic Binary Search
+Lower Bound / Upper Bound
+Rotated Array
+Binary Search on Answer ⭐
+Peak Element
+Matrix Binary Search
+Mathematical Binary Search
+
+For most product-company interviews, Binary Search on Answer, Rotated Array, and Lower/Upper Bound are the highest-yield patterns
+
+A problem usually uses Binary Search if you see one of these clues:
+
+1. Sorted Array
+
+If the array is sorted and you need to:
+
+Find an element
+Find first occurrence
+Find last occurrence
+Find insertion position
+
+Think Binary Search immediately.
+
+Examples:
+
+Binary Search
+Search Insert Position
+2. "Find Minimum/Maximum Possible Value"
+
+If the question asks:
+
+Minimum speed
+Minimum capacity
+Maximum distance
+Minimum time
+Maximum feasible value
+
+Think Binary Search on Answer.
+
+Examples:
+
+Koko Eating Bananas
+Capacity To Ship Packages Within D Days
+3. Monotonic Property Exists
+
+Ask yourself:
+
+If a value works, will all larger values also work?
+
+or
+
+If a value fails, will all smaller values also fail?
+
+If yes, Binary Search is possible.
+
+Example:
+
+Speed = 3 → Cannot finish
+Speed = 4 → Cannot finish
+Speed = 5 → Can finish
+Speed = 6 → Can finish
+Speed = 7 → Can finish
+
+This pattern:
+
+F F F T T T
+
+is perfect for Binary Search.
+
+4. Need Better Than O(n)
+
+Constraints often give it away.
+
+n = 100000
+n = 1000000
+
+If a linear scan seems too slow and data is sorted or monotonic, think Binary Search.
+
+5. Rotated Sorted Array
+
+If the statement says:
+
+sorted array rotated at some pivot
+
+Think Binary Search.
+
+Example:
+
+Search in Rotated Sorted Array
+6. First/Last Occurrence
+
+Keywords:
+
+First position
+Last position
+First greater than target
+First smaller than target
+Insertion point
+
+These usually mean Lower Bound / Upper Bound.
+
+Example:
+
+Find First and Last Position of Element in Sorted Array
+Quick Interview Checklist
+
+Before solving, ask:
+
+✅ Is the data sorted?
+✅ Am I searching for a position/boundary?
+✅ Am I finding a minimum/maximum answer?
+✅ Is there a monotonic pattern (FFFFTTTT)?
+✅ Are constraints too large for O(n²)?
+
+If any one of these is true, Binary Search is worth considering. The strongest signal is the monotonic pattern:
+
+False False False True True True
+
+Time Complexity
+| Case         | Complexity |
+| ------------ | ---------- |
+| Best Case    | O(1)       |
+| Average Case | O(log n)   |
+| Worst Case   | O(log n)   |
+
+Space Complexity
+Iterative Binary Search
+while(low <= high)
+
+Uses only a few variables.
+
+Space Complexity: O(1)
+
+Recursive Binary Search
+
+Each recursive call stays on the call stack.
+
+Space Complexity: O(log n)

@@ -1,0 +1,93 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Fixed Size Sliding Window Template
+
+// 1. Build first window of size k
+int window = 0;
+
+for(int i = 0; i < k; i++) {
+    window += nums[i];
+}
+
+// 2. Process first window
+int answer = window;
+
+// 3. Slide the window
+for(int i = k; i < nums.size(); i++) {
+
+    // Add new element entering window
+    window += nums[i];
+
+    // Remove element leaving window
+    window -= nums[i - k];
+
+    // Update answer
+    answer = max(answer, window);
+    // or min(answer, window)
+}
+
+// 4. Return answer
+return answer;
+
+
+
+
+// For String Problems
+// Build first window
+
+for(int i = 0; i < k; i++) {
+    // add s[i]
+}
+
+// Process first window
+
+for(int i = k; i < s.size(); i++) {
+
+    // add s[i]
+
+    // remove s[i-k]
+
+    // update answer
+}
+
+
+1. Window Size is Given
+
+Examples:
+
+"subarray of size k"
+"substring of length k"
+"every window of size k"
+"consecutive k elements"
+
+Examples:
+
+LC 643: Maximum Average Subarray I
+LC 1456: Maximum Number of Vowels in a Substring of Given Length
+First Negative Integer in Every Window of Size K
+2. You Never Need to Change the Window Size
+
+If every valid answer must use exactly k elements:
+
+Find maximum sum of any subarray of size k.
+
+All candidate windows have length k.
+
+[1 2 3]
+[2 3 4]
+[3 4 5]
+
+Window size never changes.
+
+3. Typical Keywords
+
+✅ size k
+
+✅ length k
+
+✅ every window of k
+
+✅ k consecutive elements
+
+✅ fixed-length substring

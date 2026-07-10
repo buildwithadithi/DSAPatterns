@@ -1,0 +1,28 @@
+Do these in order:
+
+LC 643 – Fixed Window Basics
+LC 3 – Variable Window Basics
+LC 209 – Shrinking Window
+LC 438 – Frequency Map Window
+LC 424 – Advanced Sliding Window
+
+Interview Shortcut
+
+If the problem statement contains:
+
+size k
+length k
+k consecutive
+every window of k
+
+➡️ Think Fixed Sliding Window.
+
+If it contains:
+
+longest
+shortest
+at most k
+exactly k distinct
+without repeating
+
+➡️ Think Variable Sliding Window.

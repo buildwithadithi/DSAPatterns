@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int removeCoveredIntervals(vector<vector<int>>& intervals) {
+
+        sort(intervals.begin(), intervals.end(),
+             [](vector<int>& a, vector<int>& b) {
+                 if (a[0] == b[0])
+                     return a[1] > b[1];   // Larger end first
+                 return a[0] < b[0];       // Smaller start first
+             });
+
+        int count = 0;
+        int maxEnd = -1;
+
+        for (auto &interval : intervals) {
+            if (interval[1] > maxEnd) {
+                count++;
+                maxEnd = interval[1];
+            }
+            // else: current interval is covered
+        }
+
+        return count;
+    }
+};

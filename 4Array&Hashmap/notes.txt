@@ -1,0 +1,154 @@
+1. Frequency Counting
+
+Count occurrences of elements.
+
+Tools: Hash Map (unordered_map)
+
+Questions:
+
+Valid Anagram
+Majority Element
+Find All Duplicates in an Array
+Top K Frequent Elements
+
+Recognition:
+
+"count frequency"
+"most frequent"
+"occurs k times"
+2. Duplicate Detection
+
+Check whether an element has appeared before.
+
+Tools: Hash Set
+
+Questions:
+
+Contains Duplicate
+Contains Duplicate II
+Happy Number
+
+Recognition:
+
+"duplicate"
+"repeated"
+"seen before"
+3. Fast Lookup / Complement Search
+
+Store previously seen values for O(1) lookup.
+
+Tools: Hash Map
+
+Questions:
+
+Two Sum
+Max Number of K-Sum Pairs
+
+Recognition:
+
+"find pair"
+"target sum"
+"check if value exists"
+4. Grouping
+
+Group elements having the same property.
+
+Tools: Hash Map + Vector
+
+Questions:
+
+Group Anagrams
+Find Duplicate File in System
+
+Recognition:
+
+"group"
+"cluster"
+"same pattern"
+5. Counting Distinct Elements
+
+Track unique values.
+
+Tools: Hash Set
+
+Questions:
+
+Intersection of Two Arrays
+Unique Number of Occurrences
+
+Recognition:
+
+"unique"
+"distinct"
+"different elements"
+6. Prefix Sum + Hash Map
+
+Store prefix sums to answer subarray questions.
+
+Tools: Hash Map + Prefix Sum
+
+Questions:
+
+Subarray Sum Equals K
+Continuous Subarray Sum
+Contiguous Array
+
+Recognition:
+
+"subarray"
+"sum = k"
+"count subarrays"
+7. Index Mapping
+
+Store element → index relationships.
+
+Tools: Hash Map
+
+Questions:
+
+Two Sum
+Isomorphic Strings
+
+Recognition:
+
+Need to remember where an element appeared.
+8. Hashing Strings
+
+Use character frequencies or string signatures.
+
+Tools: Array[26], Hash Map
+
+Questions:
+
+Valid Anagram
+Ransom Note
+Find the Difference
+
+Recognition:
+
+Character counts
+String matching
+
+Recommended Learning Order
+Beginner
+Contains Duplicate
+Valid Anagram
+Two Sum
+Intersection of Two Arrays
+Intermediate
+Group Anagrams
+Top K Frequent Elements
+Contains Duplicate II
+Advanced
+Subarray Sum Equals K
+Continuous Subarray Sum
+Contiguous Array
+
+For interviews, about 80% of Array + Hashing problems fall into:
+
+Frequency Counting
+Duplicate Detection
+Fast Lookup (Two Sum pattern)
+Prefix Sum + Hash Map
+
+Master these four first.

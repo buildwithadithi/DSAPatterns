@@ -1,0 +1,69 @@
+int left = 0;
+int ans = 0;   // or INT_MAX depending on problem
+
+for (int right = 0; right < n; right++) {
+
+    // 1. Expand window
+    // Add nums[right] / s[right] to your data structure
+
+    while (window_is_invalid) {
+
+        // 2. Shrink window
+        // Remove nums[left] / s[left]
+
+        left++;
+    }
+
+    // 3. Update answer
+    ans = max(ans, right - left + 1);
+    // OR
+    // ans = min(ans, right - left + 1);
+}
+
+return ans;
+
+
+How to Recognize Variable Window Problems
+
+Look for phrases like:
+
+✅ Longest substring/subarray
+
+✅ Shortest substring/subarray
+
+✅ At most K
+
+✅ Exactly K
+
+✅ No repeating characters
+
+✅ Sum ≥ target
+
+✅ Distinct elements
+
+Mental Checklist
+
+For every problem ask:
+
+1. What makes the window invalid?
+
+Examples:
+
+duplicate character
+sum > k
+distinct count > k
+
+This becomes your:
+
+while(invalid) {
+    shrink
+}
+2. When should I update answer?
+
+Longest window
+
+ans = max(ans, windowSize);
+
+Shortest window
+
+ans = min(ans, windowSize);

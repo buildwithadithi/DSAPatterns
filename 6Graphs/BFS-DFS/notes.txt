@@ -1,0 +1,10 @@
+When you can use either DFS or BFS, try to use DFS because it has shorter code.
+
+When a condition is checked and pushed into queue, make sure same cell is not pushed again.
+Remember whatever you the cell into after condition must also be present in the condition so that the same is cell is not pushed again to queue. 
+
+if (r < 0 || r >= m || c < 0 || c >= n || (board[r][c] == 'X' || board[r][c] == '#'))
+            return;
+
+        board[r][c] = '#';
+

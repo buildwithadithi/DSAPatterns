@@ -1,0 +1,87 @@
+LeetCode 1011 (Ship Within D Days)
+
+We are finding the smallest valid capacity.
+
+Example:
+
+capacity = 10 ✗
+capacity = 11 ✗
+capacity = 12 ✓
+capacity = 13 ✓
+capacity = 14 ✓
+
+At the end of binary search:
+
+high = 11   (last invalid)
+low  = 12   (first valid)
+
+Visualization:
+
+10 ✗   11 ✗   12 ✓   13 ✓   14 ✓
+         ↑      ↑
+       high    low
+
+Pattern:
+
+F F T T T
+
+Code:
+
+if(isPossible(mid))
+    high = mid - 1;   // try smaller capacity
+else
+    low = mid + 1;    // need larger capacity
+
+After the loop:
+
+high = last invalid
+low  = first valid
+
+So we return:
+
+return low;
+
+
+
+
+
+LeetCode 69 (Sqrt)
+
+We are finding the largest valid value.
+
+1 ✓
+2 ✓
+3 ✗
+4 ✗
+5 ✗
+
+At the end of binary search:
+
+1 ✓   2 ✓   3 ✗   4 ✗   5 ✗
+      ↑      ↑
+    high    low
+
+So:
+
+high = 2   (last valid)
+low  = 3   (first invalid)
+
+Pattern:
+
+T T F F F
+
+Code:
+
+if(valid(mid))
+    low = mid + 1;
+else
+    high = mid - 1;
+
+After the loop:
+
+high = last valid
+low  = first invalid
+
+So we return:
+
+return high;

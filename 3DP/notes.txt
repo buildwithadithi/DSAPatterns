@@ -1,0 +1,285 @@
+1. The problem asks for an optimal answer
+
+Keywords:
+
+Maximum
+Minimum
+Longest
+Shortest
+Best
+Fewest
+
+Examples:
+
+Maximum profit
+Minimum cost
+Longest subsequence
+Fewest coins
+
+These often indicate DP.
+
+2. The problem asks for the number of ways
+
+Keywords:
+
+Count ways
+Number of ways
+Possible arrangements
+Distinct paths
+
+Examples:
+
+Climbing Stairs
+Unique Paths
+Decode Ways
+
+If you're counting possibilities, think DP.
+
+3. You see repeated subproblems
+
+Ask yourself:
+
+"Will I solve the same state multiple times?"
+
+Example:
+
+f(5)
+├── f(4)
+│   ├── f(3)
+│   └── f(2)
+└── f(3)
+
+Notice f(3) is calculated twice.
+
+This is a classic DP signal.
+
+4. The answer depends on previous answers
+
+Examples:
+
+dp[i] = dp[i-1] + dp[i-2]
+dp[i] = min(dp[i-1], dp[i-2])
+dp[i] = max(take, notTake)
+
+If the current answer is built from smaller answers, think DP.
+
+5. "Take / Not Take" decisions
+
+Examples:
+
+Pick an item or skip it.
+Rob a house or skip it.
+Include an element or exclude it.
+
+This usually leads to:
+
+Knapsack
+Subset Sum
+House Robber
+Target Sum
+6. The input size is too large for brute force
+
+Suppose:
+
+n = 1000
+
+A recursive solution explores:
+
+2^1000
+
+which is impossible.
+
+If brute force is exponential and there are overlapping states, DP is likely needed.
+
+7. The problem involves prefixes, suffixes, or indices
+
+Examples:
+
+answer for first i elements
+answer up to index i
+answer for substring [i..j]
+
+These are common DP states.
+
+Quick DP Checklist
+
+If you can answer YES to at least 2–3 of these, try DP:
+
+✅ Maximum / Minimum / Longest / Count?
+
+✅ Can I define a state like dp[i] or dp[i][j]?
+
+✅ Does the answer depend on smaller subproblems?
+
+✅ Are there overlapping recursive calls?
+
+✅ Is brute force exponential?
+
+
+
+
+
+
+
+1. Fibonacci / 1D DP Pattern
+Recognition
+Answer depends on previous 1 or 2 states.
+"Count ways", "minimum cost", "maximum profit".
+State
+
+dp[i] = answer for first i elements
+
+Examples
+Climbing Stairs
+Min Cost Climbing Stairs
+House Robber
+Decode Ways
+Template
+dp[0] = ...
+dp[1] = ...
+
+for(int i = 2; i <= n; i++){
+    dp[i] = f(dp[i-1], dp[i-2]);
+}
+
+2. Knapsack Pattern
+Recognition
+Pick or not pick an item.
+Limited capacity/target.
+State
+
+dp[i][j] = answer using first i items with capacity j
+
+Examples
+Partition Equal Subset Sum
+Target Sum
+Coin Change
+Coin Change II
+Decision
+take
+notTake
+
+3. Longest Increasing Subsequence (LIS) Pattern
+Recognition
+Longest subsequence.
+Increasing/decreasing constraints.
+State
+dp[i] = longest subsequence ending at i
+Examples
+Longest Increasing Subsequence
+Russian Doll Envelopes
+Number of LIS
+Transition
+if(nums[j] < nums[i])
+    dp[i] = max(dp[i], dp[j] + 1);
+
+4. Longest Common Subsequence (LCS) Pattern
+Recognition
+Compare two strings.
+Match / not match.
+State
+dp[i][j]
+
+Meaning:
+
+First i chars of string1
+First j chars of string2
+Examples
+Longest Common Subsequence
+Delete Operation for Two Strings
+Edit Distance
+Transition
+if(s1[i-1] == s2[j-1])
+    dp[i][j] = 1 + dp[i-1][j-1];
+else
+    dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+    
+5. Grid DP Pattern
+Recognition
+Move in grid.
+Right/down paths.
+State
+dp[i][j]
+Examples
+Unique Paths
+Unique Paths II
+Minimum Path Sum
+Transition
+dp[i][j] =
+dp[i-1][j] + dp[i][j-1];
+6. Interval DP Pattern
+Recognition
+Work on subarrays/substrings.
+Answer depends on interval boundaries.
+State
+dp[l][r]
+Examples
+Burst Balloons
+Palindrome Partitioning II
+Transition
+
+Try every split point:
+
+for(int k=l; k<r; k++)
+7. DP on Strings
+Recognition
+Palindrome.
+String transformation.
+Examples
+Longest Palindromic Substring
+Palindromic Substrings
+Distinct Subsequences
+State
+dp[i][j]
+
+Substring from i to j.
+
+8. Stock DP Pattern
+Recognition
+Buy/sell decisions.
+Multiple transactions.
+State
+dp[index][buy]
+Examples
+Best Time to Buy and Sell Stock
+Best Time to Buy and Sell Stock II
+Best Time to Buy and Sell Stock with Cooldown
+9. DP on Subsequences
+Recognition
+Include/exclude elements.
+Target sum/count.
+Examples
+Subset Sum Problem
+Partition Equal Subset Sum
+Target Sum
+Transition
+take
+notTake
+Interview Priority Order
+
+Since you're preparing for coding interviews, learn in this order:
+
+Fibonacci / 1D DP
+House Robber Pattern
+Knapsack Pattern
+Subset Sum Pattern
+LIS Pattern
+LCS Pattern
+Grid DP
+String DP
+Stock DP
+Interval DP
+
+These 10 patterns cover roughly 80–90% of DP questions asked in interviews and on LeetCode.
+
+Recognition
+
+Ask:
+
+"Can I uniquely identify a subproblem using just one variable?"  only one variable Change
+
+If YES → 1D DP.
+
+2D DP
+
+If your state needs two variables, use 2D DP.  2 variables Change
