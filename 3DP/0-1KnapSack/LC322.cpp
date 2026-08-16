@@ -3,58 +3,33 @@ using namespace std;
 
 class Solution {
 public:
-
-    int solve(int index, int amount,
-              vector<int>& coins,
-              vector<vector<int>>& dp) {
-
-        // If amount becomes 0, no more coins are needed
+    int solve(int idx, int amount, vector<int>& coins, vector<vector<int>>& dp) {
+        // Amount formed
         if (amount == 0)
+            return 1;
+
+        // No coins left
+        if (idx == coins.size())
             return 0;
 
-        // Base Case
-        if (index == 0) {
+        if (dp[idx][amount] != -1)
+            return dp[idx][amount];
 
-            if (amount % coins[0] == 0)
-                return amount / coins[0];
+        // Skip current coin
+        int notTake = solve(idx + 1, amount, coins, dp);
 
-            return 1e9;
-        }
+        // Take current coin (stay at same index)
+        int take = 0;
+        if (coins[idx] <= amount)
+            take = solve(idx, amount - coins[idx], coins, dp);
 
-        // DP Check
-        if (dp[index][amount] != -1)
-            return dp[index][amount];
-
-        // Not Take
-        int notTake =
-            solve(index - 1, amount, coins, dp);
-
-        // Take
-        int take = 1e9;
-
-        if (coins[index] <= amount)
-            take = 1 +
-                   solve(index,
-                         amount - coins[index],
-                         coins,
-                         dp);
-
-        return dp[index][amount] =
-               min(take, notTake);
+        return dp[idx][amount] = take + notTake;
     }
 
-    int coinChange(vector<int>& coins, int amount) {
-
+    int change(int amount, vector<int>& coins) {
         int n = coins.size();
+        vector<vector<int>> dp(n, vector<int>(amount + 1, -1));
 
-        vector<vector<int>> dp(
-            n,
-            vector<int>(amount + 1, -1)
-        );
-
-        int ans =
-            solve(n - 1, amount, coins, dp);
-
-        return (ans >= 1e9) ? -1 : ans;
+        return solve(0, amount, coins, dp);
     }
 };
