@@ -18,7 +18,9 @@ public:
 
         while (!q.empty()) {
 
-            auto [state, moves] = q.front();
+            pair<string, int> curr = q.front();
+            string state = curr.first;
+            int moves = curr.second;
             q.pop();
 
             if (state == target)
