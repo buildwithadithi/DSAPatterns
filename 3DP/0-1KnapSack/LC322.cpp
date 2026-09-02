@@ -3,33 +3,53 @@ using namespace std;
 
 class Solution {
 public:
-    int solve(int idx, int amount, vector<int>& coins, vector<vector<int>>& dp) {
-        // Amount formed
-        if (amount == 0)
-            return 1;
 
-        // No coins left
-        if (idx == coins.size())
+    int solve(int index, int amount,
+              vector<int>& coins,
+              vector<vector<int>>& dp) {
+
+        // Amount completed
+        if (amount == 0)
             return 0;
 
-        if (dp[idx][amount] != -1)
-            return dp[idx][amount];
+        // No coins left
+        if (index == coins.size())
+            return 1e9;
 
-        // Skip current coin
-        int notTake = solve(idx + 1, amount, coins, dp);
+        if (dp[index][amount] != -1)
+            return dp[index][amount];
 
-        // Take current coin (stay at same index)
-        int take = 0;
-        if (coins[idx] <= amount)
-            take = solve(idx, amount - coins[idx], coins, dp);
+        // Not Take
+        int notTake =
+            solve(index + 1, amount, coins, dp);
 
-        return dp[idx][amount] = take + notTake;
+        // Take
+        int take = 1e9;
+
+        if (coins[index] <= amount) {
+            take = 1 + solve(
+                index,
+                amount - coins[index],
+                coins,
+                dp
+            );
+        }
+
+        return dp[index][amount] =
+            min(take, notTake);
     }
 
-    int change(int amount, vector<int>& coins) {
-        int n = coins.size();
-        vector<vector<int>> dp(n, vector<int>(amount + 1, -1));
+    int coinChange(vector<int>& coins, int amount) {
 
-        return solve(0, amount, coins, dp);
+        int n = coins.size();
+
+        vector<vector<int>> dp(
+            n + 1,
+            vector<int>(amount + 1, -1)
+        );
+
+        int ans = solve(0, amount, coins, dp);
+
+        return (ans >= 1e9) ? -1 : ans;
     }
 };

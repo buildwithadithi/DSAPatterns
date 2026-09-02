@@ -7,17 +7,18 @@ public:
 
     int solve(int i, int sum, vector<int>& nums) {
 
-        if (i == 0)
+        if (i == nums.size())
             return (sum == 0);
 
         if (dp[i][sum] != -1)
             return dp[i][sum];
 
-        int notTake = solve(i - 1, sum, nums);
+        int notTake = solve(i + 1, sum, nums);
 
         int take = 0;
-        if (nums[i - 1] <= sum)
-            take = solve(i - 1, sum - nums[i - 1], nums);
+
+        if (nums[i] <= sum)
+            take = solve(i + 1, sum - nums[i], nums);
 
         return dp[i][sum] = take + notTake;
     }
@@ -25,6 +26,7 @@ public:
     int findTargetSumWays(vector<int>& nums, int target) {
 
         int totalSum = 0;
+
         for (int x : nums)
             totalSum += x;
 
@@ -38,9 +40,8 @@ public:
 
         int n = nums.size();
 
-        dp.assign(n + 1,
-                  vector<int>(requiredSum + 1, -1));
+        dp.assign(n, vector<int>(requiredSum + 1, -1));
 
-        return solve(n, requiredSum, nums);
+        return solve(0, requiredSum, nums);
     }
 };

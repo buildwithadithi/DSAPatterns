@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maxSubarrayLength(vector<int>& nums, int k) {
+        unordered_map<int, int> mp;
+        int l = 0;
+        int maxi = INT_MIN;
+
+        for (int r = 0; r < nums.size(); r++) {
+            mp[nums[r]]++;
+
+            while (mp[nums[r]] > k) {
+                mp[nums[l]]--;
+                l++;
+            }
+
+            maxi = max(maxi, r - l + 1);
+        }
+        return maxi;
+    }
+};
